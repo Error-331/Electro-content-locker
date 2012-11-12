@@ -950,6 +950,7 @@ ElectroContentLocker.prototype.HideLocker = function()
     this.ShowDelayTimeout = null;
     }
 
+  this.StopStatusChecking();
   this.Overlay.style.display = 'none';
   }
   
