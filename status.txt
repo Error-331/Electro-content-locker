@@ -1,0 +1,2 @@
+tmpContLock.AddContent('<span style="color: green;">.</span>');
+tmpContLock.StartStatusChecking(); 

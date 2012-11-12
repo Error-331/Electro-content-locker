@@ -1,0 +1,165 @@
+@charset "utf-8";
+
+/* General styles starts here */    
+/* General styles ends here */
+
+/* Input align pattern styles starts here */  
+
+div.CaptContEmpty {display: block;}
+
+/* Input align pattern styles starts here */
+
+/* General jQuery UI styles starts here */  
+/* General jQuery UI styles ends here */
+
+/* Header styles starts here */
+
+div#HeadContInLeft {text-align: center;}  
+div#HeadContInLeft h1 {width: inherit; padding-left: 0px; font-size: 50px;}   
+div#HeadContInLeft span {font-size: 20px;}
+
+/* Header styles ends here */
+
+/* Body styles starts here */
+
+div#BodyContOut
+  {
+  }
+
+div#BodyContIn
+  {
+  overflow: auto;
+  }
+    
+/* Body styles ends here */
+
+/* Widget styles starts here */
+  
+div.WidgetCont
+  {
+  font-size: 17px;
+  } 
+  
+/* Widget styles ends here */
+
+/* General lockers info widget styles starts here */
+/* General lockers info widget styles ends here */
+
+/* Locking list widget styles starts here */
+
+div.LockListWidgetContContOut
+  {
+  width: 50%;
+  }
+
+div.LockListWidgetCont
+  {
+  overflow: hidden;
+  height: 455px;
+  }
+
+/* Locking list widget styles ends here */
+
+/* Customization list widget styles starts here */
+
+div.CustWidgetContOut
+  {
+  width: 50%;
+  }
+
+div.CustWidgetCont
+  {
+  overflow: hidden;
+  height: 455px;  
+  }
+
+/* Customization list widget styles ends here */
+
+/* Browser support widget styles starts here */
+/* Browser support widget styles ends here */
+
+/* Demo widget styles starts here */  
+
+div.DemoWidgetCont fieldset
+  { 
+  margin-top: inherit;
+  }    
+
+div.DemoWidgetContOut
+  {
+  margin: 0 0 5px 0;
+  }
+  
+div.DemoWidgetContIn
+  {
+  margin: 0 5px 0 5px;
+  } 
+  
+div.DemoWidgetContOut div.ui-corner-all
+  {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  }
+
+div.DemoWidgetContOut div.ui-corner-bottom
+  {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  }  
+  
+/* Demo widget styles ends here */
+
+/* Demo widget loading group styles starts here */
+
+div.LoadGroupCont
+  {
+  float: right;
+  width: 80%;
+  }
+      
+/* Demo widget loading group styles ends here */
+
+/* Demo widget locker dimensions group styles starts here */
+
+div.LcDimGroupCont
+  {
+  float: left;
+  width: 20%;
+  }
+
+/* Demo widget locker dimensions group styles ends here */
+
+/* Demo widget content dimensions group styles starts here */
+
+div.CntDimGroupCont
+  {
+  width: 20%;
+  }
+
+/* Demo widget content dimensions group styles ends here */
+
+/* Demo widget content align group styles starts here */
+
+div.CntAlGroupCont
+  {
+  width: 30%;
+  }
+/* Demo widget content align group styles ends here */
+  
+/* Demo widget border image group styles starts here */
+
+div.BiGroupCont
+  {
+  width: 25%;
+  }
+  
+/* Demo widget border image group styles ends here */
+
+/* Demo widget overlay image group styles starts here */
+
+div.OiGroupCont
+  {
+  width: 25%;
+  } 
+
+/* Demo widget overlay image group styles ends here */

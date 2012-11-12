@@ -1,0 +1,15 @@
+var tmpContent = '<div class="DemoLockContOut">';
+tmpContent += '<h3 class="DemoLockHead">Content locker</h3>';
+tmpContent += '<h4 class="DemoLockDesc">Please complete one of the following offers</h4>';
+tmpContent += '<ul class="DemoLockList">';
+tmpContent += '<li><a href="#">Offer long name 1</a></li>';
+tmpContent += '<li><a href="#">Offer long name 2</a></li>';
+tmpContent += '<li><a href="#">Offer long name 3</a></li>';
+tmpContent += '<li><a href="#">Offer long name 4</a></li>';
+tmpContent += '</ul>';
+tmpContent += '</div>';
+
+tmpContent += '<br/>';
+tmpContent += '<span class="DemoLockStatStr">Status checking...</span>';
+
+tmpContLock.SetContent(tmpContent);
