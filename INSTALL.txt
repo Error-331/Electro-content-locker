@@ -16,39 +16,39 @@ or
 4. Configure content locker, example:
 
 var usrConfig = 
-  {
-  LoadEvent: 'onclick',
-  ElementPattern: '',
+    {
+    LoadEvent: 'onclick',
+    ElementPattern: '',
 
-  ContentAttachment: 'normal',
-	ContentHAlign: 'left',
-	ContentVAlign: 'top',
+    ContentAttachment: 'normal',
+    ContentHAlign: 'left',
+    ContentVAlign: 'top',
 
-	Width: 500,
-  Height: 350,
+    Width: 500,
+    Height: 350,
 
-	ContentWidth: 450,
-	ContentHeight: 300,
+    ContentWidth: 450,
+    ContentHeight: 300,
 
-	ContentPadding: 0,
+    ContentPadding: 0,
 	      	 
-	FitBorderImage: false,
+    FitBorderImage: false,
     
-	OverlayImageURL: 'img/bg/bg8.gif',
-  BorderImageURL: 'img/border/brd1.png',	    
+    OverlayImageURL: 'img/bg/bg8.gif',
+    BorderImageURL: 'img/border/brd1.png',	    
 
-	OVOpacity: 100,
-	BGOpacity: 100,
+    OVOpacity: 100,
+    BGOpacity: 100,
    
-	OVColor: '#FF7F24',
-	BGColor: '#FFFFFF',	      
+    OVColor: '#FF7F24',
+    BGColor: '#FFFFFF',	      
 	      
-	ContentURL: 'content.txt',
-  StatusCheckURL: 'status.txt',
+    ContentURL: 'content.txt',
+    StatusCheckURL: 'status.txt',
 
-	ShowDelay: 0,
-	CheckStatusDelay: 5000
-	};
+    ShowDelay: 0,
+    CheckStatusDelay: 5000
+    };
 
 5. Setup content callback (URL path set in 'ContentURL' configuration option):
 

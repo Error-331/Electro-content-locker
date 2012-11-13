@@ -30,12 +30,12 @@
  */ 
                  
 ElectroContentLocker = function(usrConfig)
-  {
-  this.CSSPrefix = this.GenRandString(5); 
+    {
+    this.CSSPrefix = this.GenRandString(5); 
   
-  if (typeof usrConfig == 'object') {this.ConfigureLocker(usrConfig);}
-  this.Init();
-  }
+    if (typeof usrConfig == 'object') {this.ConfigureLocker(usrConfig);}
+    this.Init();
+    }
    
 /* Utility properties starts here */ 
 
@@ -395,10 +395,10 @@ ElectroContentLocker.prototype.CheckStatusDelay = null;
  */ 
 
 ElectroContentLocker.prototype.GenRandString = function(usrLength, usrCur)
-  {
-  usrCur = usrCur ? usrCur : '';
-  return usrLength ? this.GenRandString(--usrLength, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz".charAt(Math.floor(Math.random() * 60)) + usrCur) : usrCur;
-  }
+    {
+    usrCur = usrCur ? usrCur : '';
+    return usrLength ? this.GenRandString(--usrLength, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz".charAt(Math.floor(Math.random() * 60)) + usrCur) : usrCur;
+    }
   
 /**
  * Method that initializes content locker object.
@@ -410,10 +410,10 @@ ElectroContentLocker.prototype.GenRandString = function(usrLength, usrCur)
  */ 
 
 ElectroContentLocker.prototype.Init = function()
-  {
-  var tmpSelf = this;
-  this.InitTimeout = setInterval(function(){tmpSelf.CheckDocumentLoad();}, 1000);
-  }  
+    {
+    var tmpSelf = this;
+    this.InitTimeout = setInterval(function(){tmpSelf.CheckDocumentLoad();}, 1000);
+    }  
   
 /**
  * Method that checks whether document body was loaded or not.
@@ -426,16 +426,16 @@ ElectroContentLocker.prototype.Init = function()
  */ 
 
 ElectroContentLocker.prototype.CheckDocumentLoad = function()
-  {
-  if (document.body != undefined) 
     {
-    return this.onBodyLoad();
-    }
-  else
-    {
-    return false;
+    if (document.body != undefined) 
+        {
+        return this.onBodyLoad();
+        }
+    else
+        {
+        return false;
+        }  
     }  
-  }  
 
 /**
  * Method that sets configure parameters after the document body loads.
@@ -449,39 +449,39 @@ ElectroContentLocker.prototype.CheckDocumentLoad = function()
  */ 
 
 ElectroContentLocker.prototype.ConfigureLocker = function(usrConfig)
-  {  
-  this.SetLoadEvent(usrConfig.LoadEvent);
-  this.SetElementPattern(usrConfig.ElementPattern);
+    {  
+    this.SetLoadEvent(usrConfig.LoadEvent);
+    this.SetElementPattern(usrConfig.ElementPattern);
   
-  this.SetContentAttachment(usrConfig.ContentAttachment);
-  this.SetContentHAlign(usrConfig.ContentHAlign);
-  this.SetContentVAlign(usrConfig.ContentVAlign);
+    this.SetContentAttachment(usrConfig.ContentAttachment);
+    this.SetContentHAlign(usrConfig.ContentHAlign);
+    this.SetContentVAlign(usrConfig.ContentVAlign);
   
-  this.SetWidth(usrConfig.Width);
-  this.SetHeight(usrConfig.Height);
+    this.SetWidth(usrConfig.Width);
+    this.SetHeight(usrConfig.Height);
   
-  this.SetContentWidth(usrConfig.ContentWidth);
-  this.SetContentHeight(usrConfig.ContentHeight);
+    this.SetContentWidth(usrConfig.ContentWidth);
+    this.SetContentHeight(usrConfig.ContentHeight);
      
-  this.SetBlockerTextContPadding(usrConfig.ContentPadding);
+    this.SetBlockerTextContPadding(usrConfig.ContentPadding);
   
-  this.SetFitBorderImage(usrConfig.FitBorderImage);
+    this.SetFitBorderImage(usrConfig.FitBorderImage);
  
-  this.SetBlockerOverlayImgURL(usrConfig.OverlayImageURL);
-  this.SetBlockerBorderImgURL(usrConfig.BorderImageURL);
+    this.SetBlockerOverlayImgURL(usrConfig.OverlayImageURL);
+    this.SetBlockerBorderImgURL(usrConfig.BorderImageURL);
 
-  this.SetOVOpacity(usrConfig.OVOpacity);
-  this.SetBGOpacity(usrConfig.BGOpacity);
+    this.SetOVOpacity(usrConfig.OVOpacity);
+    this.SetBGOpacity(usrConfig.BGOpacity);
   
-  this.SetOVColor(usrConfig.OVColor);
-  this.SetBGColor(usrConfig.BGColor);
+    this.SetOVColor(usrConfig.OVColor);
+    this.SetBGColor(usrConfig.BGColor);
 
-  this.SetContentURL(usrConfig.ContentURL);
-  this.SetStatusCheckURL(usrConfig.StatusCheckURL);
+    this.SetContentURL(usrConfig.ContentURL);
+    this.SetStatusCheckURL(usrConfig.StatusCheckURL);
   
-  this.SetShowDelay(usrConfig.ShowDelay);
-  this.SetCheckStatusDelay(usrConfig.CheckStatusDelay);  
-  }
+    this.SetShowDelay(usrConfig.ShowDelay);
+    this.SetCheckStatusDelay(usrConfig.CheckStatusDelay);  
+    }
 
 /**
  * Method that renders content locker.
@@ -493,32 +493,32 @@ ElectroContentLocker.prototype.ConfigureLocker = function(usrConfig)
  */ 
 
 ElectroContentLocker.prototype.Render = function()
-  {
-  if (this.IsQuirks == true)
     {
-    this.ContWidth = document.body.scrollWidth; 
-    this.ContHeight = Math.max(document.body.scrollHeight, document.body.clientHeight);
-    }
-  else
-    {
-    this.ContWidth = window.innerWidth; 
-    this.ContHeight = window.innerHeight;
-    }  
+    if (this.IsQuirks == true)
+        {
+        this.ContWidth = document.body.scrollWidth; 
+        this.ContHeight = Math.max(document.body.scrollHeight, document.body.clientHeight);
+        }
+    else
+        {
+        this.ContWidth = window.innerWidth; 
+        this.ContHeight = window.innerHeight;
+        }  
     
-  this.ContHeight = (this.ContHeight == 'undefined') ? 0 : this.ContHeight; 
-  this.ContWidth = (this.ContWidth == 'undefined') ? 0 : this.ContWidth;  
+    this.ContHeight = (this.ContHeight == 'undefined') ? 0 : this.ContHeight; 
+    this.ContWidth = (this.ContWidth == 'undefined') ? 0 : this.ContWidth;  
           
-  this.DrawOverlay();
-  this.DrawContentBox();
+    this.DrawOverlay();
+    this.DrawContentBox();
   
-  this.PrepareStyles();
-  this.onStyleChange();   
-  this.SetContent('<p>Loading...</p>');
-  this.onResize();
+    this.PrepareStyles();
+    this.onStyleChange();   
+    this.SetContent('<p>Loading...</p>');
+    this.onResize();
                      
-  this.RequestContent();   
-  this.CheckStatus();     
-  }
+    this.RequestContent();   
+    this.CheckStatus();     
+    }
   
 /**
  * Method that draws overlay for the content locker.
@@ -530,12 +530,12 @@ ElectroContentLocker.prototype.Render = function()
  */  
   
 ElectroContentLocker.prototype.DrawOverlay  = function()
-  {                    
-  this.Overlay = document.createElement('div');          
-  this.Overlay.setAttribute('class', this.CSSPrefix + '_ElectroContentLocker_Overlay');
+    {                    
+    this.Overlay = document.createElement('div');          
+    this.Overlay.setAttribute('class', this.CSSPrefix + '_ElectroContentLocker_Overlay');
                         
-  document.body.insertBefore(this.Overlay, document.body.firstChild);  
-  } 
+    document.body.insertBefore(this.Overlay, document.body.firstChild);  
+    } 
   
 /**
  * Method that draws content blocker.
@@ -547,31 +547,31 @@ ElectroContentLocker.prototype.DrawOverlay  = function()
  */    
     
 ElectroContentLocker.prototype.DrawContentBox = function()
-  {
-  this.BGCont = document.createElement('div');  
-  this.BlockerContOut = document.createElement('div');  
-  this.BlockerContIn = document.createElement('div');
-  this.BlockerBGCont = document.createElement('div');    
-  this.BlockerBorderCont = document.createElement('div');
-  //this.BlockerBorderImg = document.createElement('img');
-  this.BlockerTextCont = document.createElement('div');
+    {
+    this.BGCont = document.createElement('div');  
+    this.BlockerContOut = document.createElement('div');  
+    this.BlockerContIn = document.createElement('div');
+    this.BlockerBGCont = document.createElement('div');    
+    this.BlockerBorderCont = document.createElement('div');
+    //this.BlockerBorderImg = document.createElement('img');
+    this.BlockerTextCont = document.createElement('div');
 
-  this.Overlay.appendChild(this.BGCont);
-  this.BlockerContIn.appendChild(this.BlockerBGCont);
-  this.BlockerContIn.appendChild(this.BlockerBorderCont);
-  this.BlockerBorderCont.appendChild(this.BlockerBorderImg); 
-  this.BlockerContOut.appendChild(this.BlockerContIn);  
-  this.Overlay.appendChild(this.BlockerContOut);  
+    this.Overlay.appendChild(this.BGCont);
+    this.BlockerContIn.appendChild(this.BlockerBGCont);
+    this.BlockerContIn.appendChild(this.BlockerBorderCont);
+    this.BlockerBorderCont.appendChild(this.BlockerBorderImg); 
+    this.BlockerContOut.appendChild(this.BlockerContIn);  
+    this.Overlay.appendChild(this.BlockerContOut);  
   
-  if (this.ContentAttachment == 'floatabove')
-    {
-    this.Overlay.appendChild(this.BlockerTextCont); 
-    }
-  else
-    {
-    this.BlockerContIn.appendChild(this.BlockerTextCont);  
-    }      
-  }  
+    if (this.ContentAttachment == 'floatabove')
+        {
+        this.Overlay.appendChild(this.BlockerTextCont); 
+        }
+    else
+        {
+        this.BlockerContIn.appendChild(this.BlockerTextCont);  
+        }      
+    }  
 
 /**
  * Method that prepares all the necessary styles for the content locker.
@@ -583,79 +583,79 @@ ElectroContentLocker.prototype.DrawContentBox = function()
  */  
 
 ElectroContentLocker.prototype.PrepareStyles = function()
-  {
-  /* Overlay styles starts here */
+    {
+    /* Overlay styles starts here */
   
-  this.Overlay.style.display = 'none';
+    this.Overlay.style.display = 'none';
   
-  this.Overlay.style.top = '0px';
-  this.Overlay.style.left = '0px';
+    this.Overlay.style.top = '0px';
+    this.Overlay.style.left = '0px';
          	
-  /* Overlay styles ends here */
+    /* Overlay styles ends here */
 
-  /* Background container styles starts here */
+    /* Background container styles starts here */
   
-  this.BGCont.style.top = '0px';
-  this.BGCont.style.left = '0px';
+    this.BGCont.style.top = '0px';
+    this.BGCont.style.left = '0px';
 
-  this.BGCont.style.backgroundColor = this.OVColor;
-  this.BGCont.style.backgroundImage = (this.BlockerOverlayImgURL === null) ? 'none' : 'url("' + this.BlockerOverlayImgURL + '")';
-  this.BGCont.style.backgroundPosition = "top left";
-  this.BGCont.style.backgroundRepeat = 'repeat';
+    this.BGCont.style.backgroundColor = this.OVColor;
+    this.BGCont.style.backgroundImage = (this.BlockerOverlayImgURL === null) ? 'none' : 'url("' + this.BlockerOverlayImgURL + '")';
+    this.BGCont.style.backgroundPosition = "top left";
+    this.BGCont.style.backgroundRepeat = 'repeat';
   
-  this.SetOpacity(this.BGCont, this.OVOpacity);  
+    this.SetOpacity(this.BGCont, this.OVOpacity);  
   
-  /* Background container styles starts here */
+    /* Background container styles starts here */
 
-  /* Blocker background container styles starts here */
+    /* Blocker background container styles starts here */
 
-  this.BlockerBGCont.style.position = 'relative';
+    this.BlockerBGCont.style.position = 'relative';
   
-  this.BlockerBGCont.style.backgroundColor = this.BGColor;
-  this.SetOpacity(this.BlockerBGCont, this.BGOpacity);
+    this.BlockerBGCont.style.backgroundColor = this.BGColor;
+    this.SetOpacity(this.BlockerBGCont, this.BGOpacity);
    
-  /* Blocker background container styles ends here */
+    /* Blocker background container styles ends here */
 
-  /* Blocker outer container styles starts here */
+    /* Blocker outer container styles starts here */
 	
-  this.BlockerContOut.style.cssFloat = 'left';
-  this.BlockerContOut.style.position = 'relative';
+    this.BlockerContOut.style.cssFloat = 'left';
+    this.BlockerContOut.style.position = 'relative';
   
-  //this.BlockerContOut.style.transform = 'rotate(-15deg)';
+    //this.BlockerContOut.style.transform = 'rotate(-15deg)';
   	
-  /* Blocker outer container styles ends here */  
+    /* Blocker outer container styles ends here */  
 
-  /* Blocker inner container styles starts here */
+    /* Blocker inner container styles starts here */
 	
-  this.BlockerContIn.style.overflow = 'hidden';
+    this.BlockerContIn.style.overflow = 'hidden';
 	
-  /* Blocker inner container styles ends here */ 
+    /* Blocker inner container styles ends here */ 
 
-  /* Blocker border conatiner styles starts here */
+    /* Blocker border conatiner styles starts here */
 	
-  this.BlockerBorderCont.style.position = 'relative';
-  this.BlockerBorderCont.style.left = '0px';
+    this.BlockerBorderCont.style.position = 'relative';
+    this.BlockerBorderCont.style.left = '0px';
 	
-  /* Blocker border conatiner styles ends here */ 
+    /* Blocker border conatiner styles ends here */ 
 
-  /* Blocker border image container styles starts here */
+    /* Blocker border image container styles starts here */
   
-  if (this.BlockerBorderImg !== null) 
-    {		  
-    this.BlockerBorderImg.border = "0";
-    this.BlockerBorderImg.alt = "";
-    this.BlockerBorderImg.title = "";       
+    if (this.BlockerBorderImg !== null) 
+        {		  
+        this.BlockerBorderImg.border = "0";
+        this.BlockerBorderImg.alt = "";
+        this.BlockerBorderImg.title = "";       
+        }
+  
+    /* Blocker border image container styles ends here */
+
+    /* Blocker text container styles starts here */
+  
+    this.BlockerTextCont.style.overflow = 'hidden';
+    this.BlockerTextCont.style.padding = this.BlockerTextContPadding + 'px';  
+	
+    /* Blocker text container styles ends here */ 
     }
-  
-  /* Blocker border image container styles ends here */
-
-  /* Blocker text container styles starts here */
-  
-  this.BlockerTextCont.style.overflow = 'hidden';
-  this.BlockerTextCont.style.padding = this.BlockerTextContPadding + 'px';  
-	
-  /* Blocker text container styles ends here */ 
-  }
   
 /**
  * Method that requests content for the content locker from the remote server.
@@ -667,48 +667,48 @@ ElectroContentLocker.prototype.PrepareStyles = function()
  */     
   
 ElectroContentLocker.prototype.RequestContent = function()
-  {
-  var tmpHead = null;  
-  var tmpScript = null;  
-  var tmpProp = null;
-                                                                                                
-  if (typeof this.LastJSONPPrefixRecCont != 'string')
-    {                           
-    this.LastJSONPPrefixRecCont = this.GenRandString(5); 
-  
-    tmpScript = document.createElement('script');
-    tmpScript.src = this.ContentURL;
-    tmpScript.id = this.LastJSONPPrefixRecCont + '_ElectroContentLocker_RequestContentJSONPCont';
-    tmpScript.type = 'text/javascript';
-    tmpScript.charset = 'utf-8';
-                  
-    tmpHead = document.getElementsByTagName('head')[0];
-    tmpHead.appendChild(tmpScript);  
-    }  
-  else
     {
-    if (this.IsIE == true)
-      {
-      tmpScript = document.getElementById(this.LastJSONPPrefixRecCont + '_ElectroContentLocker_RequestContentJSONPCont');
-      tmpScript.src = this.ContentURL;
-      }
+    var tmpHead = null;  
+    var tmpScript = null;  
+    var tmpProp = null;
+                                                                                                
+    if (typeof this.LastJSONPPrefixRecCont != 'string')
+        {                           
+        this.LastJSONPPrefixRecCont = this.GenRandString(5); 
+  
+        tmpScript = document.createElement('script');
+        tmpScript.src = this.ContentURL;
+        tmpScript.id = this.LastJSONPPrefixRecCont + '_ElectroContentLocker_RequestContentJSONPCont';
+        tmpScript.type = 'text/javascript';
+        tmpScript.charset = 'utf-8';
+                  
+        tmpHead = document.getElementsByTagName('head')[0];
+        tmpHead.appendChild(tmpScript);  
+        }  
     else
-      {
-      while (tmpScript = document.getElementById(this.LastJSONPPrefixRecCont + '_ElectroContentLocker_RequestContentJSONPCont')) 
-	{
-	tmpScript.parentNode.removeChild(tmpScript);
+        {
+        if (this.IsIE == true)
+            {
+            tmpScript = document.getElementById(this.LastJSONPPrefixRecCont + '_ElectroContentLocker_RequestContentJSONPCont');
+            tmpScript.src = this.ContentURL;
+            }
+        else
+            {
+            while (tmpScript = document.getElementById(this.LastJSONPPrefixRecCont + '_ElectroContentLocker_RequestContentJSONPCont')) 
+                {
+                tmpScript.parentNode.removeChild(tmpScript);
 
-	for (var tmpProp in tmpScript) 
-	  {
-	  delete tmpScript[tmpProp];
-	  }
-	}
+                for (var tmpProp in tmpScript) 
+                    {
+                    delete tmpScript[tmpProp];
+                    }
+                }
 		
-      this.LastJSONPPrefixRecCont = null;	
-      this.RequestContent();
-      }  
-    } 
-  }
+            this.LastJSONPPrefixRecCont = null;	
+            this.RequestContent();
+            }  
+        } 
+    }
   
 /**
  * Method that loads status of the content locker from the remote server.
@@ -720,48 +720,48 @@ ElectroContentLocker.prototype.RequestContent = function()
  */     
   
 ElectroContentLocker.prototype.CheckStatus = function()
-  {
-  var tmpHead = null;  
-  var tmpScript = null;  
-  var tmpProp = null;
-                                    
-  if (typeof this.LastJSONPPrefixCkStat != 'string')
     {
-    this.LastJSONPPrefixCkStat = this.GenRandString(5); 
+    var tmpHead = null;  
+    var tmpScript = null;  
+    var tmpProp = null;
+                                    
+    if (typeof this.LastJSONPPrefixCkStat != 'string')
+        {
+        this.LastJSONPPrefixCkStat = this.GenRandString(5); 
          
-    tmpScript = document.createElement('script');
-    tmpScript.src = this.StatusCheckURL;
-    tmpScript.id = this.LastJSONPPrefixCkStat + '_ElectroContentLocker_CheckStatusJSONPCont'; 
-    tmpScript.type = 'text/javascript';
-    tmpScript.charset = 'utf-8';
+        tmpScript = document.createElement('script');
+        tmpScript.src = this.StatusCheckURL;
+        tmpScript.id = this.LastJSONPPrefixCkStat + '_ElectroContentLocker_CheckStatusJSONPCont'; 
+        tmpScript.type = 'text/javascript';
+        tmpScript.charset = 'utf-8';
       
-    tmpHead = document.getElementsByTagName('head')[0];
-    tmpHead.appendChild(tmpScript);  
-    }  
-  else
-    {       
-    if (this.IsIE == true)
-      {       
-      tmpScript = document.getElementById(this.LastJSONPPrefixCkStat + '_ElectroContentLocker_CheckStatusJSONPCont');  
-      tmpScript.src = this.StatusCheckURL;   
-      }
+        tmpHead = document.getElementsByTagName('head')[0];
+        tmpHead.appendChild(tmpScript);  
+        }  
     else
-      {
-      while (tmpScript = document.getElementById(this.LastJSONPPrefixCkStat + '_ElectroContentLocker_CheckStatusJSONPCont')) 
-	{             
-	tmpScript.parentNode.removeChild(tmpScript);
+        {       
+        if (this.IsIE == true)
+            {       
+            tmpScript = document.getElementById(this.LastJSONPPrefixCkStat + '_ElectroContentLocker_CheckStatusJSONPCont');  
+            tmpScript.src = this.StatusCheckURL;   
+            }
+        else
+            {
+            while (tmpScript = document.getElementById(this.LastJSONPPrefixCkStat + '_ElectroContentLocker_CheckStatusJSONPCont')) 
+                {             
+                tmpScript.parentNode.removeChild(tmpScript);
 
-	for (var tmpProp in tmpScript) 
-	  {
-	  delete tmpScript[tmpProp];
-	  }
-	}
+                for (var tmpProp in tmpScript) 
+                    {
+                    delete tmpScript[tmpProp];
+                    }
+                }
 		
-      this.LastJSONPPrefixCkStat = null;
-      this.CheckStatus();
-      }  
-    } 
-  }  
+            this.LastJSONPPrefixCkStat = null;
+            this.CheckStatus();
+            }  
+        } 
+    }  
 
 /**
  * Method that binds all the event handlers to the elements.
@@ -773,67 +773,67 @@ ElectroContentLocker.prototype.CheckStatus = function()
  */   
 
 ElectroContentLocker.prototype.BindEvents = function()
-  {      
-  var tmpSelf = this;
-  var tmpElements = null;
-  var tmpRegExp = null;
-  var tmpFunc = function(usrEvent)
-		{    
-    var tmpEvent = usrEvent ? usrEvent : window.event;
+    {      
+    var tmpSelf = this;
+    var tmpElements = null;
+    var tmpRegExp = null;
+    var tmpFunc = function(usrEvent)
+                    {    
+                    var tmpEvent = usrEvent ? usrEvent : window.event;
     
-    if (tmpEvent.preventDefault) {tmpEvent.preventDefault();}
-    tmpEvent.returnValue = false;
+                    if (tmpEvent.preventDefault) {tmpEvent.preventDefault();}
+                    tmpEvent.returnValue = false;
                               
-		tmpSelf.UnBindBlockerShowEvents(tmpFunc); 	
-		tmpSelf.ShowLocker();
-		return false;
-		}
+                    tmpSelf.UnBindBlockerShowEvents(tmpFunc); 	
+                    tmpSelf.ShowLocker();
+                    return false;
+                    }
 
-  var Counter1 = 0;
+    var Counter1 = 0;
 
-  switch(this.LoadEvent)
-    {
-    case 'onclick':
+    switch(this.LoadEvent)
+        {
+        case 'onclick':
       
-    if (this.IsIE == false)
-      {
-      document.addEventListener('click', tmpFunc, false);
-      }
-    else
-      {
-      document.attachEvent('onclick', tmpFunc);
-      }
+        if (this.IsIE == false)
+            {
+            document.addEventListener('click', tmpFunc, false);
+            }
+        else
+            {
+            document.attachEvent('onclick', tmpFunc);
+            }
  
-    break;
+        break;
 
-    case 'link':
-    case 'csslink':
+        case 'link':
+        case 'csslink':
 
-    if (this.ElementPattern !== null) {tmpRegExp = new RegExp(this.ElementPattern);}
+        if (this.ElementPattern !== null) {tmpRegExp = new RegExp(this.ElementPattern);}
 
-    tmpElements = document.getElementsByTagName("a");
-    for (Counter1 = 0; Counter1 < tmpElements.length; Counter1++) 
-      {
-      if (this.ElementPattern !== null && this.LoadEvent == 'link') {if (tmpElements[Counter1].href.search(tmpRegExp) != 0) {continue;}}
-      if (this.ElementPattern !== null && this.LoadEvent == 'csslink')
-	{
-	if (!tmpElements[Counter1].className) {continue;}
-	if (tmpElements[Counter1].className.search(tmpRegExp) != 0) {continue;}
-	}
+        tmpElements = document.getElementsByTagName("a");
+        for (Counter1 = 0; Counter1 < tmpElements.length; Counter1++) 
+            {
+            if (this.ElementPattern !== null && this.LoadEvent == 'link') {if (tmpElements[Counter1].href.search(tmpRegExp) != 0) {continue;}}
+            if (this.ElementPattern !== null && this.LoadEvent == 'csslink')
+                {
+                if (!tmpElements[Counter1].className) {continue;}
+                if (tmpElements[Counter1].className.search(tmpRegExp) != 0) {continue;}
+                }
 
-      if (this.IsIE == false)
-	{
-	tmpElements[Counter1].addEventListener('click', tmpFunc, false);
-	}
-      else
-	{
-	tmpElements[Counter1].attachEvent('onclick', tmpFunc);
-	}
-      }
+            if (this.IsIE == false)
+                {
+                tmpElements[Counter1].addEventListener('click', tmpFunc, false);
+                }
+            else
+                {
+                tmpElements[Counter1].attachEvent('onclick', tmpFunc);
+                }
+            }
 
-    break
+        break
+        }
     }
-  }
 
 /**
  * Method that unbinds all the event handlers that are connected to blocker show.
@@ -847,44 +847,44 @@ ElectroContentLocker.prototype.BindEvents = function()
  */   
 
 ElectroContentLocker.prototype.UnBindBlockerShowEvents = function(usrFunc)
-  {
-  var tmpElements = null
-  var Counter1 = 0;
-
-  switch(this.LoadEvent)
     {
-    case 'onclick':
+    var tmpElements = null
+    var Counter1 = 0;
 
-    if (this.IsIE == false)
-      {
-      document.removeEventListener('click', usrFunc, false); 
-      }
-    else
-      {
-      document.detachEvent('onclick', usrFunc);
-      }
+    switch(this.LoadEvent)
+        {
+        case 'onclick':
+
+        if (this.IsIE == false)
+            {
+            document.removeEventListener('click', usrFunc, false); 
+            }
+        else
+            {
+            document.detachEvent('onclick', usrFunc);
+            }
  
-    break;
+        break;
 
-    case 'link':
-    case 'csslink':
+        case 'link':
+        case 'csslink':
 
-    tmpElements = document.getElementsByTagName("a");
-    for (Counter1 = 0; Counter1 < tmpElements.length; Counter1++) 
-      {
-      if (this.IsIE == false)
-	{
-	tmpElements[Counter1].removeEventListener('click', usrFunc, false);
-	}
-      else
-	{
-	tmpElements[Counter1].detachEvent('onclick', usrFunc);
-	}
-      }
+        tmpElements = document.getElementsByTagName("a");
+        for (Counter1 = 0; Counter1 < tmpElements.length; Counter1++) 
+            {
+            if (this.IsIE == false)
+                {
+                tmpElements[Counter1].removeEventListener('click', usrFunc, false);
+                }
+            else
+                {
+                tmpElements[Counter1].detachEvent('onclick', usrFunc);
+                }
+            }
 
-    break
+        break
+        }
     }
-  }
 
 /**
  * Method that show content locker.
@@ -896,36 +896,36 @@ ElectroContentLocker.prototype.UnBindBlockerShowEvents = function(usrFunc)
  */     
   
 ElectroContentLocker.prototype.ShowLocker = function()
-  {
-  var tmpSelf = this;
-  var tmpExecFunc = function() 
-		    { 
-		    tmpSelf.onStyleChange(); 
-		    tmpSelf.Overlay.style.display = 'block';
-
-		    tmpSelf.onResize(); 
-
-		    if (tmpSelf.BlockerProtection == true && tmpSelf.ProtectTimeout === null)
-		      {
-		      tmpSelf.ProtectTimeout = setInterval(function()
-						{					
-						tmpSelf.onStyleChange(); 
-						tmpSelf.ShowLocker();
-						tmpSelf.onResize(); 
-						}, 
-						1000);   
-		      }  
-		    };
-
-  if (this.ShowDelay !== null && this.ShowDelayTimeout === null)
     {
-    this.ShowDelayTimeout = setTimeout(tmpExecFunc, this.ShowDelay);
+    var tmpSelf = this;
+    var tmpExecFunc = function() 
+                        { 
+                        tmpSelf.onStyleChange(); 
+                        tmpSelf.Overlay.style.display = 'block';
+
+                        tmpSelf.onResize(); 
+
+                        if (tmpSelf.BlockerProtection == true && tmpSelf.ProtectTimeout === null)
+                            {
+                            tmpSelf.ProtectTimeout = setInterval(function()
+                                                        {					
+                                                        tmpSelf.onStyleChange(); 
+                                                        tmpSelf.ShowLocker();
+                                                        tmpSelf.onResize(); 
+                                                        }, 
+                                                        1000);   
+                            }  
+                        };
+
+    if (this.ShowDelay !== null && this.ShowDelayTimeout === null)
+        {
+        this.ShowDelayTimeout = setTimeout(tmpExecFunc, this.ShowDelay);
+        }
+    else
+        {
+        tmpExecFunc();
+        }
     }
-  else
-    {
-    tmpExecFunc();
-    }
-  }
 
 /**
  * Method that hides content locker.
@@ -937,22 +937,22 @@ ElectroContentLocker.prototype.ShowLocker = function()
  */  
 
 ElectroContentLocker.prototype.HideLocker = function()
-  {
-  if (this.BlockerProtection == true && this.ProtectTimeout !== null)
     {
-    clearInterval(this.ProtectTimeout);
-    this.ProtectTimeout = null;
-    } 
+    if (this.BlockerProtection == true && this.ProtectTimeout !== null)
+        {
+        clearInterval(this.ProtectTimeout);
+        this.ProtectTimeout = null;
+        } 
 
-  if (this.ShowDelayTimeout === null)
-    {
-    clearTimeout(this.ShowDelayTimeout);
-    this.ShowDelayTimeout = null;
+    if (this.ShowDelayTimeout === null)
+        {
+        clearTimeout(this.ShowDelayTimeout);
+        this.ShowDelayTimeout = null;
+        }
+
+    this.StopStatusChecking();
+    this.Overlay.style.display = 'none';
     }
-
-  this.StopStatusChecking();
-  this.Overlay.style.display = 'none';
-  }
   
 /**
  * Method that starts the cycle of checking content blocker status.
@@ -966,15 +966,15 @@ ElectroContentLocker.prototype.HideLocker = function()
  */    
   
 ElectroContentLocker.prototype.StartStatusChecking = function() 
-  {
-  var tmpSelf = this;  
+    {
+    var tmpSelf = this;  
     
-  if (this.CheckStatusDelay <= 0) {return false;}
-  this.StopStatusChecking();
+    if (this.CheckStatusDelay <= 0) {return false;}
+    this.StopStatusChecking();
     
-  this.CheckStatusTimeout = setTimeout(function(){tmpSelf.CheckStatus();}, this.CheckStatusDelay); 
-  return true;
-  }
+    this.CheckStatusTimeout = setTimeout(function(){tmpSelf.CheckStatus();}, this.CheckStatusDelay); 
+    return true;
+    }
   
 /**
  * Method that stops the cycle of checking content blocker status.
@@ -986,13 +986,13 @@ ElectroContentLocker.prototype.StartStatusChecking = function()
  */      
   
 ElectroContentLocker.prototype.StopStatusChecking = function() 
-  {
-  if (this.CheckStatusTimeout !== null)
     {
-    clearTimeout(this.CheckStatusTimeout);
-    this.CheckStatusTimeout = null;
-    }  
-  }
+    if (this.CheckStatusTimeout !== null)
+        {
+        clearTimeout(this.CheckStatusTimeout);
+        this.CheckStatusTimeout = null;
+        }  
+    }
   
 /**
  * Method that adds data to already existing content.
@@ -1008,35 +1008,35 @@ ElectroContentLocker.prototype.StopStatusChecking = function()
  */  
 
 ElectroContentLocker.prototype.AddContent = function(usrContent)
-  {
-  if (typeof usrContent != 'string') {return false;}
-  if (this.IsLoaded == false)
     {
-    this.ContentBuffer = usrContent;
-    return true;
-    }
+    if (typeof usrContent != 'string') {return false;}
+    if (this.IsLoaded == false)
+        {
+        this.ContentBuffer = usrContent;
+        return true;
+        }
     
-  if (this.BlockerContentCont !== null) 
-    {
-    this.BlockerContentCont.innerHTML += usrContent;
-    }	
-  else
-    {
-    this.BlockerContentCont = document.createElement('div');    
+    if (this.BlockerContentCont !== null) 
+        {
+        this.BlockerContentCont.innerHTML += usrContent;
+        }	
+    else
+        {
+        this.BlockerContentCont = document.createElement('div');    
   
-    this.BlockerContentCont.style.width = '100%';  
-    this.BlockerContentCont.style.cssFloat = 'left';  
-    this.BlockerContentCont.style.styleFloat = 'left';
-    this.BlockerContentCont.style.float = 'left'; 
-    this.BlockerContentCont.noWrap = true; 
+        this.BlockerContentCont.style.width = '100%';  
+        this.BlockerContentCont.style.cssFloat = 'left';  
+        this.BlockerContentCont.style.styleFloat = 'left';
+        this.BlockerContentCont.style.float = 'left'; 
+        this.BlockerContentCont.noWrap = true; 
    
-    this.BlockerTextCont.appendChild(this.BlockerContentCont);
-    this.BlockerContentCont.innerHTML = usrContent;    
-    }
+        this.BlockerTextCont.appendChild(this.BlockerContentCont);
+        this.BlockerContentCont.innerHTML = usrContent;    
+        }
 
-  this.onResize();  
-  return true;
-  }    
+    this.onResize();  
+    return true;
+    }    
 
 /* Core methods ends here */
 
@@ -1054,38 +1054,38 @@ ElectroContentLocker.prototype.AddContent = function(usrContent)
  */ 
 
 ElectroContentLocker.prototype.onBodyLoad = function()
-  {
-  var tmpSelf = this;  
+    {
+    var tmpSelf = this;  
                    
-  if (this.InitTimeout != null) {clearInterval(this.InitTimeout);}
-  this.IsLoaded = true;
+    if (this.InitTimeout != null) {clearInterval(this.InitTimeout);}
+    this.IsLoaded = true;
                
-  // IE 5.5, 6, 7 fix
-  if (navigator.appName == 'Microsoft Internet Explorer') 
-    {
-    this.IsIE = true;  
-    if (document.compatMode == undefined || document.compatMode != 'CSS1Compat')
-      {
-      this.IsQuirks = true;
-      } 
-    } 
+    // IE 5.5, 6, 7 fix
+    if (navigator.appName == 'Microsoft Internet Explorer') 
+        {
+        this.IsIE = true;  
+        if (document.compatMode == undefined || document.compatMode != 'CSS1Compat')
+            {
+            this.IsQuirks = true;
+            } 
+        } 
                  
-  this.Render();   
-  this.BindEvents();
+    this.Render();   
+    this.BindEvents();
 
-  if (this.LoadEvent == 'autoload')
-    {
-    this.ShowLocker();
-    }
+    if (this.LoadEvent == 'autoload')
+        {
+        this.ShowLocker();
+        }
 
-  if (this.ContentBuffer !== null) 
-    {
-    this.SetContent(this.ContentBuffer);
-    this.ContentBuffer = null;
-    }
+    if (this.ContentBuffer !== null) 
+        {
+        this.SetContent(this.ContentBuffer);
+        this.ContentBuffer = null;
+        }
   
-  return true;  
-  }  
+    return true;  
+    }  
   
 /**
  * Event handle that is invoked whenever user changes content blocker styles.
@@ -1099,50 +1099,50 @@ ElectroContentLocker.prototype.onBodyLoad = function()
  */     
   
 ElectroContentLocker.prototype.onStyleChange = function()
-  {   
-  /* Overlay styles starts here */
+    {   
+    /* Overlay styles starts here */
   
-  this.Overlay.style.position = (this.IsQuirks ? 'absolute' : 'fixed');
-  this.Overlay.style.overflow = 'auto';
+    this.Overlay.style.position = (this.IsQuirks ? 'absolute' : 'fixed');
+    this.Overlay.style.overflow = 'auto';
   
-  this.Overlay.style.zIndex = '999997';  
+    this.Overlay.style.zIndex = '999997';  
         	
-  /* Overlay styles ends here */
+    /* Overlay styles ends here */
   
-  /* Background container styles starts here */
+    /* Background container styles starts here */
   
-  this.BGCont.style.position = 'absolute';
+    this.BGCont.style.position = 'absolute';
     
-  /* Background container styles starts here */  
+    /* Background container styles starts here */  
 			
-  /* Blocker background container styles starts here */
-  /* Blocker background container styles ends here */
+    /* Blocker background container styles starts here */
+    /* Blocker background container styles ends here */
   
-  /* Blocker outer container styles starts here */
-  /* Blocker outer container styles ends here */  
+    /* Blocker outer container styles starts here */
+    /* Blocker outer container styles ends here */  
   
-  /* Blocker inner container styles starts here */
-  /* Blocker inner container styles ends here */  
+    /* Blocker inner container styles starts here */
+    /* Blocker inner container styles ends here */  
   
-  /* Blocker border conatiner styles starts here */	
-  /* Blocker border conatiner styles ends here */  
+    /* Blocker border conatiner styles starts here */	
+    /* Blocker border conatiner styles ends here */  
   	
-  /* Blocker border image container styles starts here */  
-  /* Blocker border image container styles ends here */
+    /* Blocker border image container styles starts here */  
+    /* Blocker border image container styles ends here */
 	
-  /* Blocker text container styles starts here */
+    /* Blocker text container styles starts here */
  
-  if (this.ContentAttachment == 'floatabove')
-    {
-    this.BlockerTextCont.style.position = 'absolute'; 
-    }
-  else
-    {
-    this.BlockerTextCont.style.position = 'relative';
-    }     
+    if (this.ContentAttachment == 'floatabove')
+        {
+        this.BlockerTextCont.style.position = 'absolute'; 
+        }
+    else
+        {
+        this.BlockerTextCont.style.position = 'relative';
+        }     
   
-  /* Blocker text container styles ends here */ 
-  }
+    /* Blocker text container styles ends here */ 
+    }
   
 /**
  * Event handle that is invoked whenever user resizes browser window.
@@ -1156,161 +1156,161 @@ ElectroContentLocker.prototype.onStyleChange = function()
  */   
   
 ElectroContentLocker.prototype.onResize = function()
-  {     
-  var tmpTop = 0;    
-  var tmpLeft = 0;  
+    {     
+    var tmpTop = 0;    
+    var tmpLeft = 0;  
 
-  var tmpWidth = this.BlockerContentCont.scrollWidth;
-  var tmpHeight = this.BlockerContentCont.scrollHeight;
+    var tmpWidth = this.BlockerContentCont.scrollWidth;
+    var tmpHeight = this.BlockerContentCont.scrollHeight;
     
-  /* Overlay positioning starts here */
+    /* Overlay positioning starts here */
   
-  if (this.IsQuirks == true)
-    {
-    this.ContWidth = document.body.scrollWidth; 
-    this.ContHeight = Math.max(document.body.scrollHeight, document.body.clientHeight);
-    }
-  else
-    {
-    if (this.IsIE == true)
-      {
-      this.ContWidth = document.body.clientWidth;
-      this.ContHeight = document.body.clientHeight; 
-      }
+    if (this.IsQuirks == true)
+        {
+        this.ContWidth = document.body.scrollWidth; 
+        this.ContHeight = Math.max(document.body.scrollHeight, document.body.clientHeight);
+        }
     else
-      {
-      if (this.IsIE == true)
         {
-        this.ContWidth = document.body.clientWidth;
-        this.ContHeight = document.body.clientHeight; 
-        }
-      else
-        {
-        this.ContWidth = window.innerWidth;
-        this.ContHeight = window.innerHeight; 
-        }
-      }
-    }  
+        if (this.IsIE == true)
+            {
+            this.ContWidth = document.body.clientWidth;
+            this.ContHeight = document.body.clientHeight; 
+            }
+        else
+            {
+            if (this.IsIE == true)
+                {
+                this.ContWidth = document.body.clientWidth;
+                this.ContHeight = document.body.clientHeight; 
+                }
+            else
+                {
+                this.ContWidth = window.innerWidth;
+                this.ContHeight = window.innerHeight; 
+                }
+            }
+        }  
     
-  if (this.UserWidth !== null) {tmpWidth = parseFloat(this.UserWidth);} else if (this.UserWidth === null && this.BlockerBorderImg !== null){tmpWidth = this.BlockerBorderImg.width;} else {tmpWidth = 0;}
-  if (this.UserHeight !== null) {tmpHeight = parseFloat(this.UserHeight);} else if (this.UserHeight === null && this.BlockerBorderImg !== null){tmpHeight = this.BlockerBorderImg.height;} else {tmpHeight = 0;} 
+    if (this.UserWidth !== null) {tmpWidth = parseFloat(this.UserWidth);} else if (this.UserWidth === null && this.BlockerBorderImg !== null){tmpWidth = this.BlockerBorderImg.width;} else {tmpWidth = 0;}
+    if (this.UserHeight !== null) {tmpHeight = parseFloat(this.UserHeight);} else if (this.UserHeight === null && this.BlockerBorderImg !== null){tmpHeight = this.BlockerBorderImg.height;} else {tmpHeight = 0;} 
   
-  this.ContHeight = (typeof this.ContHeight == 'number') ? this.ContHeight : 0; 
-  this.ContWidth = (typeof this.ContWidth == 'number') ? this.ContWidth : 0;
+    this.ContHeight = (typeof this.ContHeight == 'number') ? this.ContHeight : 0; 
+    this.ContWidth = (typeof this.ContWidth == 'number') ? this.ContWidth : 0;
                                              
-  this.Overlay.style.height =  (!this.IsQuirks && this.IsIE) ? '100%' : (this.ContHeight < tmpHeight ? tmpHeight : this.ContHeight) + 'px';
-  this.Overlay.style.width = '100%';
+    this.Overlay.style.height =  (!this.IsQuirks && this.IsIE) ? '100%' : (this.ContHeight < tmpHeight ? tmpHeight : this.ContHeight) + 'px';
+    this.Overlay.style.width = '100%';
   
-  /* Overlay positioning ends here */
+    /* Overlay positioning ends here */
   
-  /* Background container positioning starts here */
+    /* Background container positioning starts here */
          
-  this.BGCont.style.width = '100%';
-  this.BGCont.style.height = (!this.IsQuirks && this.IsIE) ? '100%' : (this.ContHeight < tmpHeight ? tmpHeight : this.ContHeight) + 'px';
+    this.BGCont.style.width = '100%';
+    this.BGCont.style.height = (!this.IsQuirks && this.IsIE) ? '100%' : (this.ContHeight < tmpHeight ? tmpHeight : this.ContHeight) + 'px';
   
-  /* Background container positioning ends here */  
+    /* Background container positioning ends here */  
                              
-  tmpTop = (this.Overlay.clientHeight / 2) - (tmpHeight / 2);
-  tmpLeft = (this.Overlay.clientWidth / 2) - (tmpWidth / 2);   
+    tmpTop = (this.Overlay.clientHeight / 2) - (tmpHeight / 2);
+    tmpLeft = (this.Overlay.clientWidth / 2) - (tmpWidth / 2);   
     
-  /* Blocker outer container styles starts here */
+    /* Blocker outer container styles starts here */
 
-  this.BlockerContOut.style.width = tmpWidth + 'px';
-  this.BlockerContOut.style.height = tmpHeight + 'px';
+    this.BlockerContOut.style.width = tmpWidth + 'px';
+    this.BlockerContOut.style.height = tmpHeight + 'px';
 
-  this.BlockerContOut.style.top = tmpTop + 'px';
-  this.BlockerContOut.style.left = tmpLeft + 'px';
+    this.BlockerContOut.style.top = tmpTop + 'px';
+    this.BlockerContOut.style.left = tmpLeft + 'px';
 	
-  /* Blocker outer container styles starts here */
+    /* Blocker outer container styles starts here */
 	
-  /* Blocker inner container styles starts here */
+    /* Blocker inner container styles starts here */
 	
-  this.BlockerContIn.style.width = tmpWidth + 'px';
-  this.BlockerContIn.style.height = tmpHeight + 'px';
+    this.BlockerContIn.style.width = tmpWidth + 'px';
+    this.BlockerContIn.style.height = tmpHeight + 'px';
 	
-  /* Blocker inner container styles ends here */
+    /* Blocker inner container styles ends here */
 	
-  /* Blocker background container styles starts here */
+    /* Blocker background container styles starts here */
 	
-  this.BlockerBGCont.style.width = tmpWidth + 'px';
-  this.BlockerBGCont.style.height = tmpHeight + 'px';
+    this.BlockerBGCont.style.width = tmpWidth + 'px';
+    this.BlockerBGCont.style.height = tmpHeight + 'px';
   
-  /* Blocker background container styles ends here */
+    /* Blocker background container styles ends here */
   
-  /* Blocker border conatiner styles starts here */
+    /* Blocker border conatiner styles starts here */
 	
-  this.BlockerBorderCont.style.width = tmpWidth + 'px';
-  this.BlockerBorderCont.style.height = tmpHeight + 'px';
-  this.BlockerBorderCont.style.top = '-' + tmpHeight + 'px';
+    this.BlockerBorderCont.style.width = tmpWidth + 'px';
+    this.BlockerBorderCont.style.height = tmpHeight + 'px';
+    this.BlockerBorderCont.style.top = '-' + tmpHeight + 'px';
 	
-  /* Blocker border conatiner styles ends here */
+    /* Blocker border conatiner styles ends here */
 	
-  /* Blocker text container resizing starts here */
+    /* Blocker text container resizing starts here */
   
-  //this.BlockerTextCont.style.backgroundColor = 'red'
+    //this.BlockerTextCont.style.backgroundColor = 'red'
 
-  if (this.UserContentWidth !== null) {this.BlockerTextCont.style.width = this.UserContentWidth + 'px';}
-  if (this.UserContentHeight !== null) {this.BlockerTextCont.style.height = this.UserContentHeight + 'px';}
+    if (this.UserContentWidth !== null) {this.BlockerTextCont.style.width = this.UserContentWidth + 'px';}
+    if (this.UserContentHeight !== null) {this.BlockerTextCont.style.height = this.UserContentHeight + 'px';}
 
-  this.BlockerTextCont.style.padding = this.BlockerTextContPadding + 'px';  
+    this.BlockerTextCont.style.padding = this.BlockerTextContPadding + 'px';  
   
-  if (this.ContentAttachment == 'floatabove')
-    {
-    this.BlockerTextCont.style.left = (this.Overlay.clientWidth / 2) - (this.BlockerTextCont.offsetWidth  / 2) + 'px';  
-    this.BlockerTextCont.style.top = (this.Overlay.clientHeight / 2) - (this.BlockerTextCont.offsetHeight / 2) + 'px';    
-    }
-  else
-    {
-    /* Horizontal align starts here */
+    if (this.ContentAttachment == 'floatabove')
+        {
+        this.BlockerTextCont.style.left = (this.Overlay.clientWidth / 2) - (this.BlockerTextCont.offsetWidth  / 2) + 'px';  
+        this.BlockerTextCont.style.top = (this.Overlay.clientHeight / 2) - (this.BlockerTextCont.offsetHeight / 2) + 'px';    
+        }
+    else
+        {
+        /* Horizontal align starts here */
 
-    if (this.ContentHAlign == 'left') {this.BlockerTextCont.style.left = '0px';}
-    else if (this.ContentHAlign == 'center')
-      {	
-      this.BlockerTextCont.style.left = ((tmpWidth / 2) - (this.BlockerTextCont.offsetWidth / 2)) + 'px';
-      }
-    else if (this.ContentHAlign == 'right')
-      {
-      this.BlockerTextCont.style.left = (tmpWidth - this.BlockerTextCont.offsetWidth) + 'px';
-      }	
+        if (this.ContentHAlign == 'left') {this.BlockerTextCont.style.left = '0px';}
+        else if (this.ContentHAlign == 'center')
+            {	
+            this.BlockerTextCont.style.left = ((tmpWidth / 2) - (this.BlockerTextCont.offsetWidth / 2)) + 'px';
+            }
+        else if (this.ContentHAlign == 'right')
+            {
+            this.BlockerTextCont.style.left = (tmpWidth - this.BlockerTextCont.offsetWidth) + 'px';
+            }	
     
-    /* Horizontal align ends here */
+        /* Horizontal align ends here */
       
-    /* Vertical align starts here */  
+        /* Vertical align starts here */  
       
-    if (this.ContentVAlign == 'top') {this.BlockerTextCont.style.top = '-' + (tmpHeight * 2) + 'px';}
-    else if (this.ContentVAlign == 'center') 
-      {	
-      this.BlockerTextCont.style.top = '-' + ((tmpHeight * 2) - ((tmpHeight - this.BlockerTextCont.offsetHeight) / 2)) + 'px'; 
-      }   
-    else if (this.ContentVAlign == 'bottom')
-      {
-      this.BlockerTextCont.style.top = '-' + (tmpHeight + this.BlockerTextCont.offsetHeight) + 'px';
-      }
+        if (this.ContentVAlign == 'top') {this.BlockerTextCont.style.top = '-' + (tmpHeight * 2) + 'px';}
+        else if (this.ContentVAlign == 'center') 
+            {	
+            this.BlockerTextCont.style.top = '-' + ((tmpHeight * 2) - ((tmpHeight - this.BlockerTextCont.offsetHeight) / 2)) + 'px'; 
+            }   
+        else if (this.ContentVAlign == 'bottom')
+            {
+            this.BlockerTextCont.style.top = '-' + (tmpHeight + this.BlockerTextCont.offsetHeight) + 'px';
+            }
       
-    /* Vertical align ends here */    
-    }
+        /* Vertical align ends here */    
+        }
       
-  /* Blocker text container resizing ends here */
+    /* Blocker text container resizing ends here */
   
-  /* Blocker border image container styles starts here */
+    /* Blocker border image container styles starts here */
 
-  if (this.BlockerBorderImg.complete == true)
-    {
-    this.BlockerBorderImg.style.width = tmpWidth + 'px';
-    this.BlockerBorderImg.style.height = tmpHeight + 'px';
-    }
+    if (this.BlockerBorderImg.complete == true)
+        {
+        this.BlockerBorderImg.style.width = tmpWidth + 'px';
+        this.BlockerBorderImg.style.height = tmpHeight + 'px';
+        }
   
-  this.BlockerBorderImg.alt = "";
+    this.BlockerBorderImg.alt = "";
                      
-  /* Blocker border image container styles ends here */  
+    /* Blocker border image container styles ends here */  
         
-  return true;  
-  }
+    return true;  
+    }
   
 ElectroContentLocker.prototype.onJSONPContentReceived = function(usrContent)
-  {
-  this.SetContent(usrContent);  
-  }
+    {
+    this.SetContent(usrContent);  
+    }
 
 /* Action methods ends here */
 
@@ -1328,9 +1328,9 @@ ElectroContentLocker.prototype.onJSONPContentReceived = function(usrContent)
  */  
 
 ElectroContentLocker.prototype.GetLang = function()
-  {
-  return this.Lang;
-  }
+    {
+    return this.Lang;
+    }
     
 /**
  * Method that returns client location URL.
@@ -1344,9 +1344,9 @@ ElectroContentLocker.prototype.GetLang = function()
  */    
   
 ElectroContentLocker.prototype.GetClientURL = function()
-  {
-  return this.URL;
-  } 
+    {
+    return this.URL;
+    } 
   
 /**
  * Method that returns referrer URL.
@@ -1360,9 +1360,9 @@ ElectroContentLocker.prototype.GetClientURL = function()
  */    
   
 ElectroContentLocker.prototype.GetClientReferrer = function()
-  {
-  return this.Referrer;
-  }  
+    {
+    return this.Referrer;
+    }  
   
 /**
  * Method that returns width of content locker parent container.
@@ -1376,9 +1376,9 @@ ElectroContentLocker.prototype.GetClientReferrer = function()
  */   
   
 ElectroContentLocker.prototype.GetContWidth = function() 
-  {
-  return this.ContWidth;
-  } 
+    {
+    return this.ContWidth;
+    } 
   
 /**
  * Method that returns height of content locker parent container.
@@ -1392,9 +1392,9 @@ ElectroContentLocker.prototype.GetContWidth = function()
  */   
   
 ElectroContentLocker.prototype.GetContHeight = function() 
-  {
-  return this.ContHeight;
-  }   
+    {
+    return this.ContHeight;
+    }   
   
 /**
  * Method that returns padding of content locker text container node.
@@ -1408,9 +1408,9 @@ ElectroContentLocker.prototype.GetContHeight = function()
  */    
   
 ElectroContentLocker.prototype.GetBlockerTextContPadding = function()  
-  {
-  return this.BlockerTextContPadding;
-  }    
+    {
+    return this.BlockerTextContPadding;
+    }    
   
 /* Get methods ends here */
 
@@ -1430,13 +1430,13 @@ ElectroContentLocker.prototype.GetBlockerTextContPadding = function()
  */ 
 
 ElectroContentLocker.prototype.SetLoadEvent = function(usrLoadEvent)
-  {
-  if (typeof usrLoadEvent != 'string') {return false;}
-  usrLoadEvent = usrLoadEvent.toLowerCase();
+    {
+    if (typeof usrLoadEvent != 'string') {return false;}
+    usrLoadEvent = usrLoadEvent.toLowerCase();
 
-  this.LoadEvent = usrLoadEvent;
-  return true;
-  }
+    this.LoadEvent = usrLoadEvent;
+    return true;
+    }
 
 /**
  * Method that sets pattern that is used in conjunction with this.LoadEvent.
@@ -1452,11 +1452,11 @@ ElectroContentLocker.prototype.SetLoadEvent = function(usrLoadEvent)
  */ 
 
 ElectroContentLocker.prototype.SetElementPattern = function(usrElementPattern)
-  {
-  if (typeof usrElementPattern != 'string') {return false;}
-  this.ElementPattern = usrElementPattern;
-  return true;
-  }
+    {
+    if (typeof usrElementPattern != 'string') {return false;}
+    this.ElementPattern = usrElementPattern;
+    return true;
+    }
 
 /**
  * Method that sets property which indicates how text container will behave.
@@ -1472,25 +1472,25 @@ ElectroContentLocker.prototype.SetElementPattern = function(usrElementPattern)
  */ 
   
 ElectroContentLocker.prototype.SetContentAttachment  = function(usrContentAttachment)
-  {
-  if (typeof usrContentAttachment != 'string') {return false;} 
-  var tmpOldVal = this.ContentAttachment;
-  this.ContentAttachment = usrContentAttachment;
-  
-  if (this.IsLoaded == true) 
     {
-    if (tmpOldVal == 'normal') {this.BlockerContIn.removeChild(this.BlockerTextCont); }  
-    else {this.Overlay.removeChild(this.BlockerTextCont); }  
+    if (typeof usrContentAttachment != 'string') {return false;} 
+    var tmpOldVal = this.ContentAttachment;
+    this.ContentAttachment = usrContentAttachment;
+  
+    if (this.IsLoaded == true) 
+        {
+        if (tmpOldVal == 'normal') {this.BlockerContIn.removeChild(this.BlockerTextCont); }  
+        else {this.Overlay.removeChild(this.BlockerTextCont); }  
     
-    if (this.ContentAttachment == 'normal') {this.BlockerContIn.appendChild(this.BlockerTextCont);}
-    else {this.Overlay.appendChild(this.BlockerTextCont);}
+        if (this.ContentAttachment == 'normal') {this.BlockerContIn.appendChild(this.BlockerTextCont);}
+        else {this.Overlay.appendChild(this.BlockerTextCont);}
       
-    this.onStyleChange();
-    this.onResize();
-    }
+        this.onStyleChange();
+        this.onResize();
+        }
 
-  return true;
-  } 
+    return true;
+    } 
   
 /**
  * Method that sets horizontal align of the content container.
@@ -1506,17 +1506,17 @@ ElectroContentLocker.prototype.SetContentAttachment  = function(usrContentAttach
  */   
   
 ElectroContentLocker.prototype.SetContentHAlign  = function(usrContentHAlign)
-  {
-  if (typeof usrContentHAlign != 'string') {return false;} 
-  this.ContentHAlign = usrContentHAlign;
+    {
+    if (typeof usrContentHAlign != 'string') {return false;} 
+    this.ContentHAlign = usrContentHAlign;
   
-  if (this.IsLoaded == true) 
-    {      
-    this.onResize();
+    if (this.IsLoaded == true) 
+        {      
+        this.onResize();
+        }  
+  
+    return true;
     }  
-  
-  return true;
-  }  
   
 /**
  * Method that sets vertical align of the content container.
@@ -1532,17 +1532,17 @@ ElectroContentLocker.prototype.SetContentHAlign  = function(usrContentHAlign)
  */   
   
 ElectroContentLocker.prototype.SetContentVAlign  = function(usrContentVAlign)
-  {
-  if (typeof usrContentVAlign != 'string') {return false;} 
-  this.ContentVAlign = usrContentVAlign;
+    {
+    if (typeof usrContentVAlign != 'string') {return false;} 
+    this.ContentVAlign = usrContentVAlign;
   
-  if (this.IsLoaded == true) 
-    {      
-    this.onResize();
-    }  
+    if (this.IsLoaded == true) 
+        {      
+        this.onResize();
+        }  
   
-  return true;
-  }
+    return true;
+    }
   
 /**
  * Method that sets width of the content locker.
@@ -1558,13 +1558,13 @@ ElectroContentLocker.prototype.SetContentVAlign  = function(usrContentVAlign)
  */   
 
 ElectroContentLocker.prototype.SetWidth = function(usrWidth)
-  {
-  if (typeof usrWidth != 'number') {return false;}  
+    {
+    if (typeof usrWidth != 'number') {return false;}  
 
-  this.UserWidth = usrWidth;
-  if (this.IsLoaded == true) {this.onResize();};
-  return true;
-  }
+    this.UserWidth = usrWidth;
+    if (this.IsLoaded == true) {this.onResize();};
+    return true;
+    }
 
 /**
  * Method that sets height of the content locker.
@@ -1580,13 +1580,13 @@ ElectroContentLocker.prototype.SetWidth = function(usrWidth)
  */  
 
 ElectroContentLocker.prototype.SetHeight = function(usrHeight)
-  {
-  if (typeof usrHeight != 'number') {return false;}  
+    {
+    if (typeof usrHeight != 'number') {return false;}  
     
-  this.UserHeight = usrHeight;
-  if (this.IsLoaded == true) {this.onResize();};
-  return true;
-  }
+    this.UserHeight = usrHeight;
+    if (this.IsLoaded == true) {this.onResize();};
+    return true;
+    }
   
 /**
  * Method that sets width of the content.
@@ -1602,13 +1602,13 @@ ElectroContentLocker.prototype.SetHeight = function(usrHeight)
  */   
 
 ElectroContentLocker.prototype.SetContentWidth = function(usrWidth)
-  {
-  if (typeof usrWidth != 'number') {return false;}  
+    {
+    if (typeof usrWidth != 'number') {return false;}  
     
-  this.UserContentWidth = usrWidth;
-  if (this.IsLoaded == true) {this.onResize();};
-  return true;
-  }  
+    this.UserContentWidth = usrWidth;
+    if (this.IsLoaded == true) {this.onResize();};
+    return true;
+    }  
   
 /**
  * Method that sets height of the content.
@@ -1624,13 +1624,13 @@ ElectroContentLocker.prototype.SetContentWidth = function(usrWidth)
  */  
 
 ElectroContentLocker.prototype.SetContentHeight = function(usrHeight)
-  {
-  if (typeof usrHeight != 'number') {return false;}  
+    {
+    if (typeof usrHeight != 'number') {return false;}  
     
-  this.UserContentHeight  = usrHeight;
-  if (this.IsLoaded == true) {this.onResize();};
-  return true;
-  }  
+    this.UserContentHeight  = usrHeight;
+    if (this.IsLoaded == true) {this.onResize();};
+    return true;
+    }  
   
 /**
  * Method that sets padding for content locker text container node.
@@ -1646,13 +1646,13 @@ ElectroContentLocker.prototype.SetContentHeight = function(usrHeight)
  */    
   
 ElectroContentLocker.prototype.SetBlockerTextContPadding = function(usrPadding)  
-  {
-  if (typeof usrPadding != 'number') {return false;}  
+    {
+    if (typeof usrPadding != 'number') {return false;}  
     
-  this.BlockerTextContPadding = usrPadding;
-  if (this.IsLoaded == true) {this.onResize();};
-  return true;
-  }
+    this.BlockerTextContPadding = usrPadding;
+    if (this.IsLoaded == true) {this.onResize();};
+    return true;
+    }
   
   
 /**
@@ -1669,21 +1669,21 @@ ElectroContentLocker.prototype.SetBlockerTextContPadding = function(usrPadding)
  */   
   
 ElectroContentLocker.prototype.SetFitBorderImage = function(usrFit)
-  {
-  if (typeof usrFit != 'boolean') {return false;}   
-  this.FitBorderImage = usrFit;
-  
-  if (this.FitBorderImage == true)
     {
-    if (this.IsLoaded == true && this.BlockerBorderImg !== null && this.BlockerBorderImg.complete === true) 
-      {
-      this.SetWidth(this.BlockerBorderImg.width);
-      this.SetHeight(this.BlockerBorderImg.height);
-      }   
-    } 
+    if (typeof usrFit != 'boolean') {return false;}   
+    this.FitBorderImage = usrFit;
+  
+    if (this.FitBorderImage == true)
+        {
+        if (this.IsLoaded == true && this.BlockerBorderImg !== null && this.BlockerBorderImg.complete === true) 
+            {
+            this.SetWidth(this.BlockerBorderImg.width);
+            this.SetHeight(this.BlockerBorderImg.height);
+            }   
+        } 
     
-  return true;
-  }
+    return true;
+    }
    
 /**
  * Method that sets URL for image of overlay.
@@ -1699,17 +1699,17 @@ ElectroContentLocker.prototype.SetFitBorderImage = function(usrFit)
  */   
   
 ElectroContentLocker.prototype.SetBlockerOverlayImgURL = function(usrURL)
-  {
-  if (typeof usrURL != 'string') {return false;}   
-  this.BlockerOverlayImgURL = usrURL;
-  
-  if (this.IsLoaded == true) 
     {
-    this.BGCont.style.backgroundImage = 'url("' + usrURL + '")';
-    };
+    if (typeof usrURL != 'string') {return false;}   
+    this.BlockerOverlayImgURL = usrURL;
+  
+    if (this.IsLoaded == true) 
+        {
+        this.BGCont.style.backgroundImage = 'url("' + usrURL + '")';
+        };
 
-  return true;    
-  }  
+    return true;    
+    }  
 
 /**
  * Method that sets URL for border image.
@@ -1725,31 +1725,31 @@ ElectroContentLocker.prototype.SetBlockerOverlayImgURL = function(usrURL)
  */ 
 
 ElectroContentLocker.prototype.SetBlockerBorderImgURL = function(usrURL)  
-  {
-  var tmpSelf = this;
-  this.BlockerBorderImg = new Image();    
-    
-  if (typeof usrURL != 'string') {return false;}   
-  this.BlockerBorderImgURL = usrURL;
-  
-  this.BlockerBorderImg.src = usrURL; 
-  if (this.FitBorderImage == true)
     {
-    this.BlockerBorderImg.onload = function()
-		      {					
-		      tmpSelf.SetWidth(this.width);
-		      tmpSelf.SetHeight(this.height);
-		      } 
+    var tmpSelf = this;
+    this.BlockerBorderImg = new Image();    
+    
+    if (typeof usrURL != 'string') {return false;}   
+    this.BlockerBorderImgURL = usrURL;
+  
+    this.BlockerBorderImg.src = usrURL; 
+    if (this.FitBorderImage == true)
+        {
+        this.BlockerBorderImg.onload = function()
+                                        {					
+                                        tmpSelf.SetWidth(this.width);
+                                        tmpSelf.SetHeight(this.height);
+                                        } 
           
-    if (this.BlockerBorderImg.complete == true) 
-      {
-		  tmpSelf.SetWidth(this.BlockerBorderImg.width);
-		  tmpSelf.SetHeight(this.BlockerBorderImg.height);
-      }        
-    }  
+        if (this.BlockerBorderImg.complete == true) 
+            {
+            tmpSelf.SetWidth(this.BlockerBorderImg.width);
+            tmpSelf.SetHeight(this.BlockerBorderImg.height);
+            }        
+        }  
 
-  return true;
-  }
+    return true;
+    }
   
 /**
  * Method that sets opacity for selected element.
@@ -1766,28 +1766,28 @@ ElectroContentLocker.prototype.SetBlockerBorderImgURL = function(usrURL)
  */ 
 
 ElectroContentLocker.prototype.SetOpacity = function(usrElement, usrOpacity)
-  {
-  if (typeof usrElement != 'object') {return false;}
-  if (typeof usrOpacity != 'number' || usrOpacity < 0) {return false;}
+    {
+    if (typeof usrElement != 'object') {return false;}
+    if (typeof usrOpacity != 'number' || usrOpacity < 0) {return false;}
 
-  if (usrOpacity >= 100) 
-    {
-    usrElement.style.opacity = '1';
-    usrElement.style.filter = 'alpha(opacity=100)';
-    }
-  else if (usrOpacity == 0)
-    {
-    usrElement.style.opacity = '0';
-    usrElement.style.filter = 'alpha(opacity=0)';
-    }
-  else
-    {
-    usrElement.style.opacity = '0.' + usrOpacity;
-    usrElement.style.filter = 'alpha(opacity=' + usrOpacity + ')';
-    }
+    if (usrOpacity >= 100) 
+        {
+        usrElement.style.opacity = '1';
+        usrElement.style.filter = 'alpha(opacity=100)';
+        }
+    else if (usrOpacity == 0)
+        {
+        usrElement.style.opacity = '0';
+        usrElement.style.filter = 'alpha(opacity=0)';
+        }
+    else
+        {
+        usrElement.style.opacity = '0.' + usrOpacity;
+        usrElement.style.filter = 'alpha(opacity=' + usrOpacity + ')';
+        }
 
-  return true;
-  }  
+    return true;
+    }  
   
 /**
  * Method that sets background opacity for content locker overlay.
@@ -1803,17 +1803,17 @@ ElectroContentLocker.prototype.SetOpacity = function(usrElement, usrOpacity)
  */   
   
 ElectroContentLocker.prototype.SetOVOpacity = function(usrOpacity)
-  {
-  if (typeof usrOpacity != 'number' || usrOpacity < 0) {return false;}
-  this.OVOpacity = usrOpacity;
-
-  if (this.IsLoaded == true) 
     {
-    this.SetOpacity(this.BGCont, this.OVOpacity);
-    }
+    if (typeof usrOpacity != 'number' || usrOpacity < 0) {return false;}
+    this.OVOpacity = usrOpacity;
 
-  return true;
-  }  
+    if (this.IsLoaded == true) 
+        {
+        this.SetOpacity(this.BGCont, this.OVOpacity);
+        }
+
+    return true;
+    }  
   
 /**
  * Method that sets background opacity for content locker.
@@ -1829,17 +1829,17 @@ ElectroContentLocker.prototype.SetOVOpacity = function(usrOpacity)
  */ 
 
 ElectroContentLocker.prototype.SetBGOpacity = function(usrOpacity)
-  {
-  if (typeof usrOpacity != 'number' || usrOpacity < 0) {return false;}
-  this.BGOpacity = usrOpacity;
-
-  if (this.IsLoaded == true) 
     {
-    this.SetOpacity(this.BlockerBGCont, this.BGOpacity);
-    }
+    if (typeof usrOpacity != 'number' || usrOpacity < 0) {return false;}
+    this.BGOpacity = usrOpacity;
 
-  return true;
-  }
+    if (this.IsLoaded == true) 
+        {
+        this.SetOpacity(this.BlockerBGCont, this.BGOpacity);
+        }
+
+    return true;
+    }
   
 /**
  * Method that sets background color of content locker overlay.
@@ -1855,17 +1855,17 @@ ElectroContentLocker.prototype.SetBGOpacity = function(usrOpacity)
  */ 
 
 ElectroContentLocker.prototype.SetOVColor = function(usrBGColor)
-  {
-  if (typeof usrBGColor != 'string') {return false;}   
-  this.OVColor = usrBGColor;
-
-  if (this.IsLoaded == true) 
     {
-    this.Overlay.style.backgroundColor = usrBGColor;
-    };
+    if (typeof usrBGColor != 'string') {return false;}   
+    this.OVColor = usrBGColor;
 
-  return true;
-  }     
+    if (this.IsLoaded == true) 
+        {
+        this.Overlay.style.backgroundColor = usrBGColor;
+        };
+
+    return true;
+    }     
   
 /**
  * Method that sets background color for content locker.
@@ -1881,17 +1881,17 @@ ElectroContentLocker.prototype.SetOVColor = function(usrBGColor)
  */ 
 
 ElectroContentLocker.prototype.SetBGColor = function(usrBGColor)
-  {
-  if (typeof usrBGColor != 'string') {return false;}   
-  this.BGColor = usrBGColor;
-
-  if (this.IsLoaded == true) 
     {
-    this.BlockerBGCont.style.backgroundColor = usrBGColor;
-    };
+    if (typeof usrBGColor != 'string') {return false;}   
+    this.BGColor = usrBGColor;
 
-  return true;
-  }    
+    if (this.IsLoaded == true) 
+        {
+        this.BlockerBGCont.style.backgroundColor = usrBGColor;
+        };
+
+    return true;
+    }    
   
 /**
  * Method that sets URL from which content for content blocker will be loaded.
@@ -1907,13 +1907,13 @@ ElectroContentLocker.prototype.SetBGColor = function(usrBGColor)
  */    
   
 ElectroContentLocker.prototype.SetContentURL = function(usrContentURL)
-  {
-  if (typeof usrContentURL != 'string') {return false;}
+    {
+    if (typeof usrContentURL != 'string') {return false;}
   
-  this.ContentURL = usrContentURL;
-  if (this.IsLoaded == true) {this.RequestContent();};
-  return true;
-  } 
+    this.ContentURL = usrContentURL;
+    if (this.IsLoaded == true) {this.RequestContent();};
+    return true;
+    } 
   
 /**
  * Method that sets URL from which status of the content locker will be loaded.
@@ -1929,12 +1929,12 @@ ElectroContentLocker.prototype.SetContentURL = function(usrContentURL)
  */    
   
 ElectroContentLocker.prototype.SetStatusCheckURL = function(usrStatusCheckURL)
-  {
-  if (typeof usrStatusCheckURL != 'string') {return false;}
+    {
+    if (typeof usrStatusCheckURL != 'string') {return false;}
   
-  this.StatusCheckURL = usrStatusCheckURL;
-  return true;
-  }     
+    this.StatusCheckURL = usrStatusCheckURL;
+    return true;
+    }     
     
 /**
  * Method that sets content for the content locker.
@@ -1950,30 +1950,30 @@ ElectroContentLocker.prototype.SetStatusCheckURL = function(usrStatusCheckURL)
  */  
 
 ElectroContentLocker.prototype.SetContent = function(usrContent)
-  {
-  if (typeof usrContent != 'string') {return false;}
-  if (this.IsLoaded == false)
     {
-    this.ContentBuffer = usrContent;
-    return true;
-    }
+    if (typeof usrContent != 'string') {return false;}
+    if (this.IsLoaded == false)
+        {
+        this.ContentBuffer = usrContent;
+        return true;
+        }
     
-  if (this.BlockerContentCont !== null) {this.BlockerTextCont.removeChild(this.BlockerContentCont);}	
+    if (this.BlockerContentCont !== null) {this.BlockerTextCont.removeChild(this.BlockerContentCont);}	
   
-  this.BlockerContentCont = document.createElement('div');    
+    this.BlockerContentCont = document.createElement('div');    
   
-  this.BlockerContentCont.style.width = '100%';  
-  this.BlockerContentCont.style.cssFloat = 'left';  
-  this.BlockerContentCont.style.styleFloat = 'left';
-  this.BlockerContentCont.style.float = 'left'; 
-  this.BlockerContentCont.noWrap = true; 
+    this.BlockerContentCont.style.width = '100%';  
+    this.BlockerContentCont.style.cssFloat = 'left';  
+    this.BlockerContentCont.style.styleFloat = 'left';
+    this.BlockerContentCont.style.float = 'left'; 
+    this.BlockerContentCont.noWrap = true; 
    
-  this.BlockerTextCont.appendChild(this.BlockerContentCont);
-  this.BlockerContentCont.innerHTML = usrContent;
-  this.onResize(); 
+    this.BlockerTextCont.appendChild(this.BlockerContentCont);
+    this.BlockerContentCont.innerHTML = usrContent;
+    this.onResize(); 
   
-  return true;
-  }  
+    return true;
+    }  
  
 /**
  * Method that sets delay before content locker will be shown.
@@ -1989,11 +1989,11 @@ ElectroContentLocker.prototype.SetContent = function(usrContent)
  */ 
 
 ElectroContentLocker.prototype.SetShowDelay = function(usrShowDelay)
-  {
-  if (typeof usrShowDelay != 'number') {return false;}  
-  this.ShowDelay = usrShowDelay;
-  return true;
-  }
+    {
+    if (typeof usrShowDelay != 'number') {return false;}  
+    this.ShowDelay = usrShowDelay;
+    return true;
+    }
   
 /**
  * Method that sets delay before each status check request.
@@ -2009,11 +2009,11 @@ ElectroContentLocker.prototype.SetShowDelay = function(usrShowDelay)
  */   
 
 ElectroContentLocker.prototype.SetCheckStatusDelay = function(usrCheckStatusDelay)
-  {
-  if (typeof usrCheckStatusDelay != 'number') {return false;}  
-  this.CheckStatusDelay = usrCheckStatusDelay;
+    {
+    if (typeof usrCheckStatusDelay != 'number') {return false;}  
+    this.CheckStatusDelay = usrCheckStatusDelay;
   
-  return true;
-  }
+    return true;
+    }
    
 /* Set methods ends here */
