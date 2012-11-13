@@ -8,6 +8,8 @@ Released on November 12, 2012.
 SYSTEM REQUIREMENTS
 -------------------
 
+Browser with JavaScript support.
+
 INSTALLATION
 ------------
 

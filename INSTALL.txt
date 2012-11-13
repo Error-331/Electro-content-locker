@@ -1,5 +1,96 @@
 INSTALLATION
 ------------
 
+1.1. Download Electro content locker form https://github.com/Error-331/Electro-content-locker/downloads
+2.1. Copy locker.js to the folder where all of your JavaScript files resides
+3.1. Link to locker.js from your html file: 
+
+<script type="text/javascript" src="[PATH]/locker.js"></script> 
+
+or
+
+1.2. Link to locker.js from your html file using external file:
+
+<script type="text/javascript" src="https://raw.github.com/Error-331/Electro-content-locker/master/locker/locker.js"></script>  
+
+4. Configure content locker, example:
+
+var usrConfig = 
+  {
+  LoadEvent: 'onclick',
+  ElementPattern: '',
+
+  ContentAttachment: 'normal',
+	ContentHAlign: 'left',
+	ContentVAlign: 'top',
+
+	Width: 500,
+  Height: 350,
+
+	ContentWidth: 450,
+	ContentHeight: 300,
+
+	ContentPadding: 0,
+	      	 
+	FitBorderImage: false,
+    
+	OverlayImageURL: 'img/bg/bg8.gif',
+  BorderImageURL: 'img/border/brd1.png',	    
+
+	OVOpacity: 100,
+	BGOpacity: 100,
+   
+	OVColor: '#FF7F24',
+	BGColor: '#FFFFFF',	      
+	      
+	ContentURL: 'content.txt',
+  StatusCheckURL: 'status.txt',
+
+	ShowDelay: 0,
+	CheckStatusDelay: 5000
+	};
+
+5. Setup content callback (URL path set in 'ContentURL' configuration option):
+
+var tmpContent = '<div class="DemoLockContOut">';
+tmpContent += '<h3 class="DemoLockHead">Content locker</h3>';
+tmpContent += '<h4 class="DemoLockDesc">Please complete one of the following offers</h4>';
+tmpContent += '<ul class="DemoLockList">';
+tmpContent += '<li><a href="#">Offer long name 1</a></li>';
+tmpContent += '<li><a href="#">Offer long name 2</a></li>';
+tmpContent += '<li><a href="#">Offer long name 3</a></li>';
+tmpContent += '<li><a href="#">Offer long name 4</a></li>';
+tmpContent += '</ul>';
+tmpContent += '</div>';
+
+tmpContent += '<br/>';
+tmpContent += '<span class="DemoLockStatStr">Status checking...</span>';
+
+tmpContLock.SetContent(tmpContent);
+
+6. Setup status check callback (URL path set in 'StatusCheckURL' configuration option): 
+
+..Some code
+..
+..
+tmpContLock.AddContent('<span style="color: green;">.</span>');
+tmpContLock.StartStatusChecking();
+..
+..
+..or stop status checking if some condition is met
+..
+..
+tmpContLock.HideLocker();
+
+7. Initiate and show content locker:
+
+..Some code
+..
+tmpContLock = new ElectroContentLocker(usrConfig); 
+..
+..
+
 SYSTEM REQUIREMENTS
 -------------------
+
+Browser with JavaScript support.
