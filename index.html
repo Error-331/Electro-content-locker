@@ -56,7 +56,7 @@
    <div id="BodyContIn">
    
    
-    <!--General lockers info starts here-->
+    <!--General lockers widget starts here-->
    
     <div class="WidgetContOut GenLockInfoWidgetContOut">
      <div class="ui-widget WidgetContIn">
@@ -80,9 +80,9 @@
      </div>
     </div>
     
-    <!--General lockers info ends here-->
+    <!--General lockers widget ends here-->
     
-    <!--Locking list starts here-->
+    <!--Locking list widget starts here-->
     
     <div class="WidgetContOut LockListWidgetContContOut">
      <div class="ui-widget WidgetContIn">
@@ -114,9 +114,9 @@
      </div>
     </div>
     
-    <!--Locking list ends here-->    
+    <!--Locking list widget ends here-->    
     
-    <!--Customization info starts here-->
+    <!--Customization widget starts here-->
     
     <div class="WidgetContOut CustWidgetContOut">
      <div class="ui-widget WidgetContIn">
@@ -153,9 +153,9 @@
      </div>
     </div>    
     
-    <!--Customization info ends here-->
+    <!--Customization widget ends here-->
        
-    <!--Browser support info starts here-->
+    <!--Browser support widget starts here-->
     
     <div class="WidgetContOut BSupWidgetContOut">
      <div class="ui-widget WidgetContIn">
@@ -178,9 +178,138 @@
      </div>
     </div>    
     
-    <!--Browser support info ends here-->    
+    <!--Browser support widget ends here-->    
     
+    <!--Setup widget starts here-->
     
+    <div class="WidgetContOut SetupWidgetContOut">
+     <div class="ui-widget WidgetContIn">
+      <div class="ui-widget-header ui-corner-top WidgetHead">
+       Setup
+      </div>
+     
+      <div class="ui-widget-content ui-corner-bottom WidgetCont"> 
+       1.1. Download Electro content locker form <a href="https://github.com/Error-331/Electro-content-locker/downloads" class="RedLink">here</a><br/>
+       2.1. Copy <a href="#" class="GreenLink">locker.js</a> to the folder where all of your JavaScript files resides<br/>
+       3.1. Link to <a href="#" class="GreenLink">locker.js</a> from your html file: 
+       <br/>
+       <br/>
+       <code>
+        &lt;script type="text/javascript" src="[PATH]/locker.js"&gt;&lt;/script&gt; 
+       </code>
+       <br/>
+       <br/>
+       <span>or</span>
+       <br/>
+       <br/>
+       1.2. Link to <a href="#" class="GreenLink">locker.js</a> from your html file using external file:       
+       <br/>
+       <br/>
+       <code>
+        &lt;script type="text/javascript" src="https://raw.github.com/Error-331/Electro-content-locker/master/locker/locker.js"&gt;&lt;/script&gt;  
+       </code>
+       <br/>
+       <br/> 
+       4. Configure content locker, example:
+       <br/>
+       <br/>   
+       <code>
+       
+var usrConfig =<br/> 
+    {<br/>
+    LoadEvent: 'onclick',<br/>
+    ElementPattern: '',<br/>
+    <br/>
+    ContentAttachment: 'normal',<br/>
+    ContentHAlign: 'left',<br/>
+    ContentVAlign: 'top',<br/>
+    <br/>
+    Width: 500,<br/>
+    Height: 350,<br/>
+
+    ContentWidth: 450,<br/>
+    ContentHeight: 300,<br/>
+    <br/>
+    ContentPadding: 0,<br/>
+	  <br/>    	 
+    FitBorderImage: false,<br/>
+    <br/>
+    OverlayImageURL: 'img/bg/bg8.gif',<br/>
+    BorderImageURL: 'img/border/brd1.png',<br/>	    
+    <br/>
+    OVOpacity: 100,<br/> 
+    BGOpacity: 100,<br/>
+    <br/>
+    OVColor: '#FF7F24',<br/>
+    BGColor: '#FFFFFF',<br/>	      
+	  <br/>    
+    ContentURL: 'content.txt',<br/>
+    StatusCheckURL: 'status.txt',<br/>
+    <br/>
+    ShowDelay: 0,<br/>
+    CheckStatusDelay: 5000<br/>
+    };       
+       
+       </code> 
+       <br/>
+       <br/>
+       5. Setup content callback (URL path set in '<a href="#" class="GreenLink">ContentURL</a>' configuration option):
+       <br/>
+       <br/>   
+       <code>
+       
+var tmpContent = '&lt;div class="DemoLockContOut"&gt;';<br/>
+tmpContent += '&lt;h3 class="DemoLockHead"&gt;Content locker&lt;/h3&gt;';<br/>
+tmpContent += '&lt;h4 class="DemoLockDesc"&gt;Please complete one of the following offers&lt;/h4&gt;';<br/>
+tmpContent += '&lt;ul class="DemoLockList"&gt;';<br/>
+tmpContent += '&lt;li&gt;&lt;a href="#"&gt;Offer long name 1&lt;/a&gt;&lt;/li&gt;';<br/>
+tmpContent += '&lt;li&gt;&lt;a href="#"&gt;Offer long name 2&lt;/a&gt;&lt;/li&gt;';<br/>
+tmpContent += '&lt;li&gt;&lt;a href="#"&gt;Offer long name 3&lt;/a&gt;&lt;/li&gt;';<br/>
+tmpContent += '&lt;li&gt;&lt;a href="#"&gt;Offer long name 4&lt;/a&gt;&lt;/li&gt;';<br/>
+tmpContent += '&lt;/ul&gt;';<br/>
+tmpContent += '&lt;/div&gt;';<br/>
+
+tmpContent += '&lt;br/&gt;';<br/>
+tmpContent += '&lt;span class="DemoLockStatStr"&gt;Status checking...&lt;/span&gt;';<br/>
+
+tmpContLock.SetContent(tmpContent);       
+       
+       </code>
+       <br/>
+       <br/> 
+       6. Setup status check callback (URL path set in '<a href="#" class="GreenLink">StatusCheckURL</a>' configuration option):
+       <br/>
+       <br/>   
+       <code>
+..Some code<br/>
+..<br/>
+..<br/>
+tmpContLock.AddContent('&lt;span style="color: green;"&gt;.&lt;/span&gt;');<br/>
+tmpContLock.StartStatusChecking();<br/>
+..<br/>
+..<br/>
+..or stop status checking if some condition is met<br/>
+..<br/>
+..<br/>
+tmpContLock.HideLocker();       
+       </code>
+       <br/>
+       <br/> 
+       7. Initiate and show content locker:
+       <br/>
+       <br/> 
+       <code>
+..Some code<br/>
+..<br/>
+tmpContLock = new ElectroContentLocker(usrConfig);<br/> 
+..<br/>
+..        
+       </code>                             
+      </div>
+     </div>
+    </div>     
+    
+    <!--Setup widget ends here-->
                   
    </div>
   </div>

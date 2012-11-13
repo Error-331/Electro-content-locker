@@ -90,6 +90,15 @@ div.BSupWidgetContOut
 
 /* Browser support widget styles ends here */
 
+/* Setup widget styles starts here */
+  
+div.SetupWidgetContOut code
+  {   
+  font-size: 15px;
+  }  
+
+/* Setup widget styles ends here */
+
 /* Demo widget styles starts here */  
 
 div.DemoWidgetCont fieldset
