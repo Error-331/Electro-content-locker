@@ -1410,7 +1410,23 @@ ElectroContentLocker.prototype.GetContHeight = function()
 ElectroContentLocker.prototype.GetBlockerTextContPadding = function()  
     {
     return this.BlockerTextContPadding;
-    }    
+    } 
+    
+/**
+ * Method that returns current page character encoding.
+ * 
+ * Simple method that returns current page character encoding.
+ * 
+ * @access public    
+ * 
+ * @return string character encoding.
+ *              
+ */     
+    
+ElectroContentLocker.prototype.GetCharSet = function()  
+    {
+    return document.characterSet ? document.characterSet : document.charset;
+    }     
   
 /* Get methods ends here */
 
