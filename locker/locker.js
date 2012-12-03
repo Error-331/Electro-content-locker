@@ -41,13 +41,6 @@ ElectroContentLocker = function(usrConfig)
 
 /**
  * @access public
- * @var int id that was returned from the setInterval() function, used to check whether document was loaded or not
- */ 
-  
-ElectroContentLocker.prototype.InitTimeout = null; 
-
-/**
- * @access public
  * @var int id that was returned from the setInterval() function, used to initiate blocker protection mechanism
  */ 
   
@@ -411,9 +404,8 @@ ElectroContentLocker.prototype.GenRandString = function(usrLength, usrCur)
 
 ElectroContentLocker.prototype.Init = function()
     {
-    var tmpSelf = this;
-    this.InitTimeout = setInterval(function(){tmpSelf.CheckDocumentLoad();}, 1000);
-    }  
+    this.CheckDocumentLoad()
+    }   
   
 /**
  * Method that checks whether document body was loaded or not.
@@ -427,14 +419,45 @@ ElectroContentLocker.prototype.Init = function()
 
 ElectroContentLocker.prototype.CheckDocumentLoad = function()
     {
-    if (document.body != undefined) 
+    var tmpSelf = this;
+    var tmpTopLvl = false;
+    var tmpReady = false;
+  
+    if (document.addEventListener) 
         {
-        return this.onBodyLoad();
-        }
-    else
+        document.addEventListener( "DOMContentLoaded", function(){tmpSelf.onBodyLoad();}, false );
+        window.addEventListener("load", function(){tmpSelf.onBodyLoad();}, false );
+        } 
+    else if (document.attachEvent) 
         {
-        return false;
-        }  
+        document.attachEvent("onreadystatechange", function(){tmpSelf.onBodyLoad();});
+        window.attachEvent( "onload", function(){tmpSelf.onBodyLoad();});
+
+        try 
+            {
+            tmpTopLvl = window.frameElement == null;
+            } 
+        catch(usrError) 
+            {
+            }
+
+        if (tmpTopLvl && tmpTopLvl.doScroll) 
+            {
+            (function ScrollCheck() 
+                {        
+                try 
+                    {
+                    tmpTopLvl.doScroll("left");
+                    } 
+                catch(usrError) 
+                    {
+                    return setTimeout(ScrollCheck, 50);
+                    }
+            
+                tmpSelf.onBodyLoad();
+                })();
+            }
+        }   
     }  
 
 /**
@@ -1055,9 +1078,9 @@ ElectroContentLocker.prototype.AddContent = function(usrContent)
 
 ElectroContentLocker.prototype.onBodyLoad = function()
     {
-    var tmpSelf = this;  
-                   
-    if (this.InitTimeout != null) {clearInterval(this.InitTimeout);}
+    if (this.IsLoaded === true) {return true;}    
+           
+    var tmpSelf = this;                    
     this.IsLoaded = true;
                
     // IE 5.5, 6, 7 fix
