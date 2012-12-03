@@ -423,6 +423,7 @@ ElectroContentLocker.prototype.CheckDocumentLoad = function()
     var tmpTopLvl = false;
     var tmpReady = false;
   
+    if (document.body != undefined) {this.onBodyLoad();}
     if (document.addEventListener) 
         {
         document.addEventListener( "DOMContentLoaded", function(){tmpSelf.onBodyLoad();}, false );
